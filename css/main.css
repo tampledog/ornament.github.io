@@ -1304,9 +1304,12 @@ template {
   .footer-menu__outer {
     width: 45%;
     padding: 0;
+    display: flex;
+    justify-content: flex-end;
   }
   .footer-menu__outer .link {
     font-size: 15px;
+    padding-right: 0;
   }
   .footer-menu__address {
     width: 100%;
