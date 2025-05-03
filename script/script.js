@@ -28,15 +28,26 @@ const initScripts = () => {
 
   const headerForm = () => {
     const form = document.querySelector('.js-brief');
-    const button = document.querySelector('.js-header-form-button');
+    const formInner = form.querySelector('.brief__outer');
+    const buttons = document.querySelectorAll('.js-header-form-button');
+    const header = document.querySelector('header');
 
-    button.addEventListener('click', () => {
-      if (form.classList.contains('active')) {
-        form.classList.remove('active');
-      } else {
-        form.classList.add('active');
-      }
-    });
+    buttons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (form.classList.contains('active')) {
+          form.classList.remove('active');
+          body.classList.remove('blocked');
+          form.style.top = `-100vh`;
+        } else {
+          form.classList.add('active');
+          form.style.top = `${header.clientHeight}px`;
+          formInner.style.maxHeight = `calc(100vh - ${ header.clientHeight}px)`;
+          body.classList.add('blocked');
+        }
+      });
+    })
   }
 
   const archiveItems = () => {
@@ -136,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       const theLine = new marquee( document.getElementById( 'marquee' ), {
         delayBeforeStart: 0,
-        speed: 140,
+        speed: 70,
         duplicated: true,
       });
     }, 10);

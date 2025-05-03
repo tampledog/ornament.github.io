@@ -28,6 +28,9 @@ body {
   min-height: 100svh;
   background-color: #ffffff;
 }
+body.blocked {
+  overflow: hidden;
+}
 
 main {
   display: block;
@@ -420,17 +423,22 @@ template {
 }
 
 .brief {
-  position: absolute;
+  position: fixed;
   background-color: #ffffff;
   border-bottom: 1px solid #000000;
   width: 100%;
-  top: 100%;
-  transform: translateY(-101%);
-  z-index: 1;
+  height: 100%;
+  top: 0;
+  left: 0;
   transition: all 200ms;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.3);
 }
-.brief.active {
-  transform: translateY(0);
+.brief__wrapper {
+  width: calc(100% - 60px);
+  height: calc(100% - 80px);
+  margin: 40px auto;
+  background-color: #ffffff;
 }
 .brief__title {
   font-size: 98px;
@@ -1085,6 +1093,9 @@ template {
 @media (max-width: 992px) {
   .cta {
     font-size: 13px;
+  }
+  .cursor {
+    display: none;
   }
   .header__wrapper {
     padding: 20px 0;
