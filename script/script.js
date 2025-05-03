@@ -19,34 +19,42 @@ const initScripts = () => {
       if (menu.classList.contains('active')) {
         menu.classList.remove('active');
         body.classList.remove('menu-open');
+        body.classList.remove('blocked');
       } else {
         menu.classList.add('active');
         body.classList.add('menu-open');
+        body.classList.add('blocked');
       }
     });
   }
 
   const headerForm = () => {
     const form = document.querySelector('.js-brief');
-    const formInner = form.querySelector('.brief__outer');
     const buttons = document.querySelectorAll('.js-header-form-button');
-    const header = document.querySelector('header');
+    const closeButtons = document.querySelectorAll('.js-close-brief');
+
+    const closeForm = () => {
+      form.classList.remove('active');
+      body.classList.remove('blocked');
+    }
 
     buttons.forEach((button) => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
-
         if (form.classList.contains('active')) {
-          form.classList.remove('active');
-          body.classList.remove('blocked');
-          form.style.top = `-100vh`;
+          closeForm();
         } else {
           form.classList.add('active');
-          form.style.top = `${header.clientHeight}px`;
-          formInner.style.maxHeight = `calc(100vh - ${ header.clientHeight}px)`;
           body.classList.add('blocked');
         }
       });
+    })
+
+    closeButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeForm();
+      })
     })
   }
 
