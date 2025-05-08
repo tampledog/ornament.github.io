@@ -27,7 +27,18 @@ body {
   font-family: "Archivo VF Beta", arial, sans-serif;
   min-height: 100svh;
   background-color: #ffffff;
-  overflow: hidden;
+}
+body.mobile .scroll-container {
+  height: auto;
+}
+body.mobile .ss-content {
+  width: 100%;
+}
+body.mobile .ss-wrapper {
+  width: 100%;
+}
+body.mobile .ss-scroll {
+  height: 0;
 }
 body.blocked {
   overflow: hidden;
@@ -640,22 +651,18 @@ template {
 }
 .brand__video {
   height: 100%;
-  padding-bottom: 56.25%;
-  position: relative;
   display: flex;
+  max-height: 686px;
 }
 .brand__video-inner {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 .brand__video-inner video {
   width: 100%;
-  height: 100%;
 }
 .brand__info {
   font-size: 20px;

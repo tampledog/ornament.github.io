@@ -103,8 +103,17 @@ const initScripts = () => {
   }
 
 
-  const el = document.querySelector('.scroll-container');
-  SimpleScrollbar.initEl(el);
+  function isMobileUserAgent() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  }
+
+  const scrollContainer = document.querySelector('.scroll-container');
+  SimpleScrollbar.initEl(scrollContainer);
+
+  if (isMobileUserAgent()) {
+    body.classList.add('mobile')
+  }
+
 
   cursorFunctional();
   mainMenu();
