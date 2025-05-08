@@ -11,19 +11,27 @@ const initScripts = () => {
     body.prepend(cursor);
   }
 
+  // const scrollBarWidth = () => {
+  //   return window.innerWidth - body.clientWidth;
+  // }
+
   const mainMenu = () => {
     const menu = document.querySelector('.js-main-menu');
     const menuButton = menu.querySelector('.menu-button');
+    // const scrollWidth = scrollBarWidth();
 
     menuButton.addEventListener('click', () => {
       if (menu.classList.contains('active')) {
         menu.classList.remove('active');
         body.classList.remove('menu-open');
         body.classList.remove('blocked');
+        body.style.paddingRight = `0px`;
+
       } else {
         menu.classList.add('active');
         body.classList.add('menu-open');
         body.classList.add('blocked');
+        // body.style.paddingRight = `${scrollWidth}px`;
       }
     });
   }
@@ -60,6 +68,8 @@ const initScripts = () => {
 
   const archiveItems = () => {
     const block = document.querySelector('.archive__content');
+
+    if (!block) return;
     const buttons = block.querySelectorAll('.archive-switcher');
     const images = block.querySelectorAll('.archive-image');
 
@@ -92,6 +102,9 @@ const initScripts = () => {
     });
   }
 
+
+  const el = document.querySelector('.scroll-container');
+  SimpleScrollbar.initEl(el);
 
   cursorFunctional();
   mainMenu();
