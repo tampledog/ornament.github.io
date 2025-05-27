@@ -166,9 +166,9 @@ class Cases {
     this.outer = this.container.querySelector('.cases__content');
     this.inner = this.container.querySelector('.cases__content-inner');
     this.cases = this.container.querySelectorAll('.case-item');
-    this.totalHeight = 220;
+    this.totalHeight = 10;
     this.artificalBlocks = [];
-    this.normalize = 3;
+    this.normalize = 2;
 
     this.cases.forEach((i) => {
       this.totalHeight += i.clientHeight;
@@ -225,11 +225,11 @@ class Cases {
 
       this.artificalBlocks.forEach((item, index) => {
         if (this.inner.getBoundingClientRect().top < 0) {
-          if (item.position.top < currentBlockPosition && currentBlockPosition < item.position.bottom) {
-            this.currentItem = this.cases[item.number];
-            this.cases[item.number].style.height = `${countPrevHeight(item.number) + blockPose}px`;
+          if (index < this.artificalBlocks.length - 1) {
+            if (item.position.top < currentBlockPosition && currentBlockPosition < item.position.bottom) {
+              this.cases[item.number].style.height = `${countPrevHeight(item.number) + blockPose}px`;
+            }
           }
-
         }
       });
     });
