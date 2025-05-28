@@ -272,8 +272,6 @@ class Clients {
           this.inners[index].style.transform = `translateX(${100 - ((window.innerHeight  * 0.7 - line.getBoundingClientRect().top) / (line.clientHeight / 100))}%)`;
           this.inners[index].style.opacity = `${1 / (100 - ((window.innerHeight  * 0.7 - line.getBoundingClientRect().top) / (line.clientHeight / 100)))}`;
         }
-
-
       })
     }
 
@@ -292,10 +290,7 @@ class Ornament {
 
     this.block.style.marginBottom = `${this.innerBlock.clientHeight}px`;
 
-    console.log(this.innerBlock.clientHeight / 100, ' <<< ');
-
     window.addEventListener('scroll', () => {
-
       const bottomPoint = this.topBlock.getBoundingClientRect().top + this.topBlock.clientHeight;
       const difference = window.innerHeight - bottomPoint;
 
