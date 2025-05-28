@@ -260,14 +260,17 @@ class Clients {
       this.lines.forEach((line, index) => {
         if (line.getBoundingClientRect().top + line.clientHeight > window.innerHeight  * 0.7) {
           this.inners[index].style.transform = `translateX(130%)`;
+          this.inners[index].style.opacity = `0`;
         }
 
         if (line.getBoundingClientRect().top + line.clientHeight < window.innerHeight  * 0.7) {
           this.inners[index].style.transform = `translateX(0)`;
+          this.inners[index].style.opacity = `1`;
         }
 
         if (line.getBoundingClientRect().top < window.innerHeight * 0.7 && line.getBoundingClientRect().top + line.clientHeight > window.innerHeight  * 0.7) {
-          this.inners[index].style.transform = `translateX(${100 - ((window.innerHeight  * 0.7 - line.getBoundingClientRect().top) / (line.clientHeight / 100))}%)`
+          this.inners[index].style.transform = `translateX(${100 - ((window.innerHeight  * 0.7 - line.getBoundingClientRect().top) / (line.clientHeight / 100))}%)`;
+          this.inners[index].style.opacity = `${1 / (100 - ((window.innerHeight  * 0.7 - line.getBoundingClientRect().top) / (line.clientHeight / 100)))}`;
         }
 
 
@@ -276,6 +279,30 @@ class Clients {
 
     window.addEventListener('scroll', () => {
       makeCurrentLine();
+    });
+  }
+}
+
+class Ornament {
+  constructor(block) {
+    this.block = block;
+    this.topBlock = this.block.querySelector('.footer__top');
+    this.mainBlock = this.block.querySelector('.footer__text');
+    this.innerBlock = this.block.querySelector('.footer-ornament');
+
+    this.block.style.marginBottom = `${this.innerBlock.clientHeight}px`;
+
+    console.log(this.innerBlock.clientHeight / 100, ' <<< ');
+
+    window.addEventListener('scroll', () => {
+
+      const bottomPoint = this.topBlock.getBoundingClientRect().top + this.topBlock.clientHeight;
+      const difference = window.innerHeight - bottomPoint;
+
+      if (difference > 0) {
+        this.mainBlock.style.height = `${difference}px`;
+        this.innerBlock.style.transform = `translateY(${100 - (difference / (this.innerBlock.clientHeight / 100))}%)`;
+      }
     });
   }
 }
@@ -300,6 +327,9 @@ document.addEventListener('DOMContentLoaded', () => {
   clientsBlock.forEach((item) => {
     new Clients(item);
   });
+
+  const ornament = document.querySelector('footer');
+  new Ornament(ornament);
 
 
   const roadmapSlider = () => {

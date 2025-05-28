@@ -1227,15 +1227,16 @@ template {
   padding-left: 50px;
   transform: translateX(130%);
   transition: all 750ms ease-out;
+  opacity: 0;
 }
 
 .footer {
   background-color: #000000;
   padding-top: 84px;
-  transition: all 550ms;
+  transition: all 350ms;
 }
-.footer__copyright {
-  margin-bottom: 40px;
+.footer__top {
+  padding-bottom: 40px;
 }
 .footer__copyright-inner {
   display: flex;
@@ -1247,12 +1248,21 @@ template {
 }
 .footer__text {
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0;
   overflow: hidden;
-  transition: all 550ms;
+  position: fixed;
   z-index: -1;
   bottom: 0;
   width: 100%;
   left: 0;
+}
+.footer__text .mbox {
+  width: 100%;
+  max-width: unset;
+  padding: 0;
 }
 .footer__text svg {
   width: 100%;
@@ -1394,7 +1404,7 @@ template {
 }
 
 .footer-ornament {
-  padding: 40px 0;
+  padding: 5% 0 0;
   background-color: #ffffff;
 }
 
