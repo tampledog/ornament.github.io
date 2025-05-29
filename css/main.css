@@ -1238,6 +1238,16 @@ template {
   margin-top: 32px;
 }
 
+.client {
+  max-width: 247px;
+  width: 100%;
+  max-height: 177px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .clients {
   overflow: hidden;
 }
@@ -1712,6 +1722,9 @@ template {
   }
   .best-agency {
     max-width: unset;
+  }
+  .best-agency__img:last-child {
+    margin-top: 4px;
   }
   .best-agency__pics {
     justify-content: space-between;
