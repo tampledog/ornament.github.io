@@ -692,7 +692,7 @@ template {
 .best-agency {
   display: flex;
   flex-direction: column;
-  max-width: 380px;
+  max-width: 390px;
 }
 .best-agency__pics {
   display: flex;
