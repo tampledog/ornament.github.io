@@ -624,7 +624,7 @@ template {
   height: 162px;
 }
 .hero__best {
-  margin-top: 42px;
+  margin-top: 102px;
 }
 .hero__wrapper {
   padding-top: 50px;
@@ -691,8 +691,13 @@ template {
 
 .best-agency {
   display: flex;
-  align-items: flex-end;
-  max-width: 450px;
+  flex-direction: column;
+  max-width: 350px;
+}
+.best-agency__pics {
+  display: flex;
+  justify-content: flex-start;
+  gap: 75px;
 }
 .best-agency__img {
   display: flex;
@@ -700,8 +705,8 @@ template {
   justify-content: center;
 }
 .best-agency__title {
-  padding-left: 20px;
-  padding-bottom: 8px;
+  margin-bottom: 25px;
+  font-size: 15px;
 }
 
 .brand {
@@ -774,11 +779,11 @@ template {
 }
 .discuss__col .cta {
   margin-left: auto;
-  margin-top: 40px;
+  margin-top: 55px;
 }
 .discuss__text {
-  max-width: 470px;
-  color: #6F6F6F;
+  max-width: 460px;
+  color: #AEA9A9;
   font-size: 20px;
 }
 
@@ -859,26 +864,70 @@ template {
 .accordion--dark {
   background-color: #464444;
 }
+.accordion--dark .cta {
+  color: #D1D1D1;
+  border-color: #D1D1D1;
+}
+.accordion--dark .cta:hover {
+  color: #000000;
+}
+.accordion--dark .accordion__title {
+  color: #D1D1D1;
+}
 .accordion--dark .discuss__text {
   color: #D1D1D1;
 }
 .accordion--darker {
   background-color: #18181A;
 }
+.accordion--darker .cta {
+  color: #D1D1D1;
+  border-color: #D1D1D1;
+}
+.accordion--darker .cta:hover {
+  color: #000000;
+}
+.accordion--darker .discuss__text {
+  color: #D1D1D1;
+}
 .accordion--light-grey {
-  background-color: #777779;
+  background-color: #F1F1F1;
+}
+.accordion--light-grey .accordion__title {
+  color: #777779;
+}
+.accordion--light-grey .cta {
+  color: #777779;
+  border-color: #777779;
+}
+.accordion--light-grey .cta:hover {
+  color: #000000;
 }
 .accordion--light-grey .discuss__text {
-  color: #B1B1B1;
+  color: #777779;
 }
 .accordion--grey {
-  background-color: #5D5D5D;
+  background-color: #696464;
+}
+.accordion--grey .cta {
+  color: #D1D1D1;
+  border-color: #D1D1D1;
+}
+.accordion--grey .cta:hover {
+  color: #000000;
 }
 .accordion--grey .discuss__text {
   color: #D1D1D1;
 }
 .accordion--light {
-  background-color: #EBEBEB;
+  background-color: #F1F1F1;
+}
+.accordion--light .cta {
+  color: #777779;
+  border-color: #777779;
+}
+.accordion--light .cta:hover {
+  color: #000000;
 }
 .accordion--light .accordion__title {
   color: #777779;
@@ -1664,6 +1713,9 @@ template {
   .best-agency {
     max-width: unset;
   }
+  .best-agency__pics {
+    justify-content: space-between;
+  }
   .best-agency__title {
     font-size: 12px;
     padding-left: 8px;
@@ -1703,7 +1755,7 @@ template {
     padding-bottom: 45px;
   }
   .hero__best {
-    margin-top: 10px;
+    margin-top: 30px;
   }
   .hero__image {
     padding: 0;
@@ -1835,6 +1887,9 @@ template {
   }
   .accordion__title {
     font-size: 25px;
+  }
+  .accordion__title br {
+    display: none;
   }
   .accordion__inner {
     padding-bottom: 20px;
