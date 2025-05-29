@@ -692,7 +692,7 @@ template {
 .best-agency {
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 380px;
 }
 .best-agency__pics {
   display: flex;
@@ -704,9 +704,12 @@ template {
   align-items: center;
   justify-content: center;
 }
+.best-agency__img img {
+  height: 51px;
+}
 .best-agency__title {
   margin-bottom: 25px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .brand {
@@ -1730,7 +1733,7 @@ template {
     justify-content: space-between;
   }
   .best-agency__title {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 8px;
   }
   .hero__pic {
