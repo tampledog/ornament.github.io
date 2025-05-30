@@ -986,7 +986,6 @@ template {
   min-height: 150px;
   padding: 32px 0;
   overflow: hidden;
-  position: sticky;
   width: 100%;
   top: 0;
 }
@@ -1584,6 +1583,9 @@ template {
   .hero__image:hover .hero__pic--4 {
     top: 67%;
     left: 50%;
+  }
+  .case-item {
+    position: sticky;
   }
 }
 @media (max-width: 992px) {
