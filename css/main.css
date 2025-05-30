@@ -80,7 +80,6 @@ body.menu-open main {
 
 main {
   display: block;
-  overflow: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -968,10 +967,6 @@ template {
   cursor: pointer;
 }
 
-.cases__items {
-  position: sticky;
-  top: 0;
-}
 .cases__top {
   border-bottom: 1px solid #000000;
   padding-bottom: 90px;
@@ -985,31 +980,21 @@ template {
   font-size: 32px;
   margin-top: 32px;
 }
-.cases__content-inner {
-  height: 3000px;
-  width: 100%;
-  position: absolute;
-}
 
 .case-item {
-  position: relative;
-  transition: all 720ms ease-out;
+  background-color: #ffffff;
   min-height: 150px;
   padding: 32px 0;
   overflow: hidden;
+  position: sticky;
+  width: 100%;
+  top: 0;
 }
-.case-item .mbox {
-  height: 100%;
+.case-item:not(:first-child) {
+  border-top: 1px solid #000000;
 }
-.case-item:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50vw);
-  width: 100vw;
-  height: 1px;
-  background-color: #000000;
+.case-item:last-child {
+  border-bottom: 1px solid #000000;
 }
 .case-item__wrap {
   overflow: hidden;
@@ -1049,6 +1034,7 @@ template {
   height: 100%;
   overflow: hidden;
   max-width: 910px;
+  display: flex;
 }
 
 .block-top {

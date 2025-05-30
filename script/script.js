@@ -161,78 +161,30 @@ class Accordions {
 }
 
 class Cases {
-  constructor(container) {
-    this.container = container;
-    this.outer = this.container.querySelector('.cases__content');
-    this.inner = this.container.querySelector('.cases__content-inner');
-    this.cases = this.container.querySelectorAll('.case-item');
-    this.totalHeight = 10;
-    this.artificalBlocks = [];
-    this.normalize = 2;
+  constructor(block) {
+    this.block = block;
+    this.wrapper = this.block.querySelector('.cases__items');
+    this.items = this.block.querySelectorAll('.case-item');
 
-    this.cases.forEach((i) => {
-      this.totalHeight += i.clientHeight;
-    });
+    const visibleHeight = 150;
+    const length = this.items.length;
 
-    this.outer.style.height = `${this.totalHeight * this.normalize}px`;
-    this.inner.style.height = `${this.totalHeight * this.normalize}px`;
 
-    const countPrevHeight = (length) => {
-      if (length < 0) {
-        return 0;
-      }
-
-      let height = 0;
-
-      for (let i = 0; i <= length; i++) {
-        height += this.artificalBlocks[i].height;
-      }
-
-      return height;
-    }
-
-    const getArtificalBlocksPosition = (number) => {
-      let top = 0;
-      let bottom = 0;
-
-      if (number === 0) {
-        return { top: 0, bottom: this.cases[number].clientHeight }
-      }
-
-      for (let i = 0; i < number; i++) {
-        top += this.cases[i].clientHeight;
-        bottom = top + this.cases[number].clientHeight
-      }
-
-      return { top: top, bottom: bottom }
-    }
-
-    for (let i = 0; i < this.cases.length; i++) {
-      let block = {
-        number: i,
-        height: this.cases[i].clientHeight,
-        position: getArtificalBlocksPosition(i)
-      }
-
-      this.cases[i].style.maxHeight = `${this.cases[i].clientHeight}px`;
-      this.artificalBlocks.push(block);
+    const nextBlocksAmount = (current) => {
+      return (length - 1) - current;
     }
 
 
-    window.addEventListener('scroll', () => {
-      const blockPose = this.inner.getBoundingClientRect().top / this.normalize;
-      const currentBlockPosition = Math.abs(this.inner.getBoundingClientRect().top / this.normalize);
+    for (let i = 0; i < this.items.length; i++) {
+      let topPosition = i * visibleHeight;
 
-      this.artificalBlocks.forEach((item, index) => {
-        if (this.inner.getBoundingClientRect().top < 0) {
-          if (index < this.artificalBlocks.length - 1) {
-            if (item.position.top < currentBlockPosition && currentBlockPosition < item.position.bottom) {
-              this.cases[item.number].style.height = `${countPrevHeight(item.number) + blockPose}px`;
-            }
-          }
-        }
-      });
-    });
+      this.items[i].style.top = `${topPosition}px`;
+      this.items[i].style.marginBottom = `${nextBlocksAmount(i) * visibleHeight}px`;
+
+      if (this.items[i + 1]) {
+        this.items[i + 1].style.marginTop = `-${nextBlocksAmount(i) * visibleHeight}px`;
+      }
+    }
   }
 }
 
